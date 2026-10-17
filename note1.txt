@@ -1,0 +1,39 @@
+Jawaban Tugas Analisis Praktik 11
+
+1, Pengamatan Perubahan Nilai Clock pada Node-2 dan Node-3 saat RECEIVE Event:   
+Perubahan pada Node-2:   
+Kondisi Sebelum Receive: Clock lokal Node-2 bernilai 1 (setelah mengeksekusi 1 internal event).   
+
+Pesan yang Diterima: 
+Pesan dari Node-1 membawa Timestamp Send = 2.   
+
+Perubahan Clock: 
+Saat menerima pesan, nilai Clock Node-2 berubah/melompat dari 1 menjadi 3.   
+
+Perhitungan: max(1, 2) + 1 = 2 + 1 = 3.   
+
+Perubahan pada Node-3:   
+Kondisi Sebelum Receive: 
+Clock lokal Node-3 bernilai 2 (setelah mengeksekusi 2 internal event). 
+Pesan yang Diterima: 
+Pesan dari Node-2 membawa Timestamp Send = 5.   
+
+Perubahan Clock: 
+Saat menerima pesan, nilai Clock Node-3 melompat signifikan dari 2 menjadi 6.   
+
+Perhitungan: max(2, 5) + 1 = 5 + 1 = 6.   
+
+
+2. Penjelasan Mengapa Clock Lokal Penerima Melompat Maju:   
+
+Nilai Clock lokal pada node penerima melompat maju dikarenakan oleh Aturan Kausalitas (Happened-Before Relationship) dan Aturan Penyesuaian Jam Logis Lamport:   
+
+Konsistensi Hubungan Sebab-Akibat (Kausalitas):   
+Dalam sistem terdistribusi, aksi pengiriman pesan (Send) adalah sebab, sedangkan penerimaan pesan (Receive) adalah akibat. Menurut prinsip fisika dan logika sistem, sebuah akibat PASTI terjadi setelah sebabnya. Jika timestamp pengirim (T_{send} = 5) lebih besar daripada clock lokal penerima (C_{recv} = 2), penerima harus memajukan jam logisnya agar waktu penerimaan secara logis terbukti terjadi setelah waktu pengiriman (6 > 5).
+
+
+
+
+
+
+
